@@ -13,7 +13,7 @@ class Engagement
   property :name, :index => :exact
   property :client, :index => :exact
   
-  has_n(:requirement).to(Capability)
+  has_n(:requirement)
 end
 
 class Consultant
@@ -21,12 +21,12 @@ class Consultant
   
   property :name, :index => :exact
   
-  has_n(:skill).to(Capability)
+  has_n(:skill)
 end
 
 def assignments(consultant, *engagements)
   engagements.each do |engagement|
-    consultant.outgoing(:ASSIGNED_TO) << engagement
+    consultant.outgoing(:assigned_to) << engagement
   end
 end
 
